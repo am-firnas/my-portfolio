@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Professional and academic portfolio of a software engineer and AI/ML researcher.">
+<title>Firnas Aleem — Software Engineer & AI Researcher</title>
+<style>
+:root { color-scheme: light dark; --bg: light-dark(#f7f8f6,#101717); --surface: light-dark(#ffffff,#182221); --text: light-dark(#182725,#edf5f2); --muted: light-dark(#60716e,#a8b8b3); --line: light-dark(#dce5e1,#30403c); --accent: light-dark(#087f70,#6ed9c3); --accent2: light-dark(#dff4ed,#183b35); --soft: light-dark(#eef2ef,#202c29); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+#site { min-height: 100vh; background: var(--bg); border-radius: 0; }
+.wrap { width: min(1120px, calc(100% - 44px)); margin: 0 auto; }
+nav { height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.2rem; }
+.brand span { color: var(--accent); }
+.navlinks { display: flex; gap: 25px; align-items: center; color: var(--muted); font-size: .9rem; }
+.navlinks a:hover, .textlink:hover { color: var(--accent); }
+.menu-btn { display: none; background: transparent; color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 8px 11px; font-size: 1.1rem; }
+.hero { padding: 88px 0 78px; display: grid; grid-template-columns: 1.5fr .8fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; gap: 9px; align-items: center; border: 1px solid var(--line); color: var(--muted); border-radius: 100px; padding: 7px 12px; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent2); }
+h1 { font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.02; letter-spacing: -.065em; margin: 23px 0 22px; max-width: 760px; }
+h1 em { color: var(--accent); font-style: normal; }
+.lead { color: var(--muted); font-size: clamp(1.03rem, 2vw, 1.18rem); max-width: 650px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.btn { display: inline-flex; justify-content: center; align-items: center; padding: 12px 17px; border-radius: 10px; font-weight: 700; font-size: .92rem; border: 1px solid var(--line); transition: transform .2s, background .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.primary { background: var(--accent); color: #08241f; border-color: var(--accent); }
+.btn.secondary { background: var(--surface); }
+.hero-card { border: 1px solid var(--line); border-radius: 22px; background: var(--surface); padding: 27px; position: relative; overflow: hidden; }
+.hero-card:before { content: ""; position: absolute; width: 190px; height: 190px; border-radius: 50%; background: var(--accent2); right: -75px; top: -80px; }
+.monogram { width: 74px; height: 74px; border-radius: 19px; display: grid; place-items: center; background: var(--accent2); color: var(--accent); font-size: 1.55rem; font-weight: 850; letter-spacing: -.06em; position: relative; }
+.hero-card h2 { margin: 20px 0 4px; font-size: 1.35rem; letter-spacing: -.03em; }
+.hero-card p { color: var(--muted); font-size: .91rem; margin: 0; }
+.mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 25px; }
+.stat { background: var(--soft); border-radius: 12px; padding: 14px; }
+.stat strong { display: block; font-size: 1.35rem; letter-spacing: -.04em; }
+.stat span { color: var(--muted); font-size: .78rem; }
+section { padding: 76px 0; border-top: 1px solid var(--line); }
+.section-head { display: flex; justify-content: space-between; gap: 25px; align-items: end; margin-bottom: 31px; }
+.kicker { color: var(--accent); font-size: .76rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 800; }
+h2.section-title { font-size: clamp(1.8rem, 4vw, 2.7rem); letter-spacing: -.055em; line-height: 1.12; margin: 8px 0 0; }
+.section-intro { max-width: 480px; color: var(--muted); margin: 0; font-size: .95rem; }
+.about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 35px; }
+.about-copy { color: var(--muted); font-size: 1.02rem; }
+.about-copy p:first-child { margin-top: 0; }
+.skill-cloud { display: flex; flex-wrap: wrap; gap: 9px; align-content: start; }
+.pill { padding: 8px 12px; border-radius: 9px; background: var(--surface); border: 1px solid var(--line); font-size: .83rem; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 17px; padding: 23px; display: flex; flex-direction: column; min-height: 290px; transition: transform .2s, border-color .2s; }
+.card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 24px; }
+.iconbox { width: 43px; height: 43px; display: grid; place-items: center; background: var(--accent2); color: var(--accent); border-radius: 12px; font-size: 1.15rem; }
+.tag { font-size: .72rem; color: var(--accent); background: var(--accent2); border-radius: 100px; padding: 5px 9px; white-space: nowrap; }
+.card h3 { margin: 0 0 10px; font-size: 1.14rem; letter-spacing: -.025em; line-height: 1.3; }
+.card p { margin: 0; color: var(--muted); font-size: .9rem; }
+.card .meta { margin-top: auto; padding-top: 21px; color: var(--muted); font-size: .77rem; }
+.timeline { border-left: 1px solid var(--line); margin-left: 8px; }
+.timeline-item { position: relative; padding: 0 0 31px 27px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item:before { content: ""; position: absolute; left: -5px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px var(--accent2); }
+.timeline-item .date { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.timeline-item h3 { margin: 5px 0; font-size: 1.12rem; }
+.timeline-item p { margin: 0; color: var(--muted); max-width: 790px; font-size: .93rem; }
+.edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.edu { background: var(--surface); border: 1px solid var(--line); padding: 21px; border-radius: 15px; }
+.edu .year { color: var(--accent); font-size: .76rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; }
+.edu h3 { font-size: 1rem; line-height: 1.35; margin: 9px 0 6px; }
+.edu p { color: var(--muted); font-size: .85rem; margin: 0; }
+.awards { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.award { display: flex; gap: 14px; padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.award .medal { font-size: 1.25rem; }
+.award h3 { font-size: .96rem; margin: 0 0 4px; }
+.award p { color: var(--muted); font-size: .82rem; margin: 0; }
+.media-feature { display: grid; grid-template-columns: 1.35fr .65fr; gap: 20px; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); transition: transform .2s, border-color .2s; }
+.media-feature:hover { transform: translateY(-3px); border-color: var(--accent); }
+.media-window { min-height: 250px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--soft); }
+.media-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--line); }
+.media-brand { font-weight: 850; letter-spacing: -.04em; }
+.media-label { color: var(--muted); font-size: .68rem; letter-spacing: .08em; text-align: right; }
+.media-body { padding: clamp(20px, 4vw, 34px); }
+.media-kicker { color: var(--accent); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
+.media-headline { max-width: 600px; margin-top: 12px; font-size: clamp(1.35rem, 3vw, 2.15rem); font-weight: 800; line-height: 1.12; letter-spacing: -.045em; }
+.media-summary { margin-top: 12px; color: var(--muted); font-size: .9rem; }
+.media-cta { display: inline-block; margin-top: 18px; color: var(--accent); font-size: .88rem; font-weight: 800; }
+.media-caption { display: flex; flex-direction: column; justify-content: center; gap: 9px; padding: 12px; }
+.media-caption strong { font-size: 1.12rem; line-height: 1.3; }
+.media-caption span { color: var(--muted); font-size: .88rem; }
+.callout { border-radius: 22px; padding: clamp(25px, 5vw, 48px); background: var(--accent2); display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.callout h2 { font-size: clamp(1.7rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -.05em; margin: 8px 0 12px; }
+.callout p { color: var(--muted); max-width: 650px; margin: 0; }
+footer { padding: 27px 0; display: flex; justify-content: space-between; gap: 18px; color: var(--muted); font-size: .8rem; }
+.small-note { font-size: .76rem; color: var(--muted); margin-top: 20px; }
+@media (max-width: 800px) { .hero { grid-template-columns: 1fr; padding: 62px 0; gap: 35px; } .hero-card { max-width: 480px; } .cards { grid-template-columns: 1fr 1fr; } .about-grid { grid-template-columns: 1fr; } .edu-grid { grid-template-columns: 1fr; } .section-head { align-items: start; flex-direction: column; } .media-feature { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .wrap { width: min(100% - 30px, 1120px); } nav { height: 66px; } .menu-btn { display: block; } .navlinks { display: none; position: absolute; z-index: 5; top: 66px; left: 0; right: 0; padding: 20px; background: var(--surface); border-bottom: 1px solid var(--line); flex-direction: column; align-items: start; } .navlinks.open { display: flex; } .hero { padding: 50px 0; } section { padding: 55px 0; } .cards, .awards { grid-template-columns: 1fr; } .card { min-height: 250px; } .callout { flex-direction: column; align-items: start; } footer { flex-direction: column; } .media-top { align-items: start; flex-direction: column; } .media-label { text-align: left; } }
+@media print { nav, .actions, .menu-btn { display: none !important; } body, #site { background: white; color: #182725; } section { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div id="site">
+  <div class="wrap">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="#home">FA<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#about">About</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#awards">Awards</a><a href="#recognition">Media</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <header class="hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Software engineering · Applied AI</div>
+        <h1>Building software.<br>Exploring <em>intelligence.</em></h1>
+        <p class="lead">I'm Firnas Aleem, a software engineering professional with around eight years of experience and a research background in machine learning, deep learning, time-series analysis, and large language models.</p>
+        <div class="actions"><a class="btn primary" href="#research">Explore my research ↘</a><a class="btn secondary" href="#contact">Get in touch</a><a class="btn secondary" href="https://www.linkedin.com/in/firnas-aleem-4682a010b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="btn secondary" href="https://github.com/am-firnas" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+      </div>
+      <aside class="hero-card">
+        <div class="monogram">FA</div>
+        <h2>Firnas Aleem</h2>
+        <p>Software Engineer · AI/ML Researcher</p>
+        <div class="mini-stats">
+          <div class="stat"><strong>~8 yrs</strong><span>Software engineering</span></div>
+          <div class="stat"><strong>3.52/4.00</strong><span>Master's GPA</span></div>
+          <div class="stat"><strong>3</strong><span>Highlighted research projects</span></div>
+          <div class="stat"><strong>AI / ML</strong><span>Next career focus</span></div>
+        </div>
+        <p class="small-note">Based in Sri Lanka · Open to postgraduate study and AI engineering opportunities</p>
+      </aside>
+    </header>
+  </div>
+  <section id="about"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">01 / About</div><h2 class="section-title">Engineering experience,<br>research curiosity.</h2></div><p class="section-intro">My focus is on turning machine-learning ideas into practical, reliable software systems.</p></div>
+    <div class="about-grid"><div class="about-copy"><p>My background combines professional software engineering with academic research in AI. Across my studies and research projects, I have explored ways to use data-driven methods to predict service demand, make database access more natural, and support better decisions in software systems.</p><p>I am now looking to deepen my expertise in artificial intelligence, building on my existing engineering experience and research foundation. My longer-term goal is to design and deliver intelligent, scalable applications as an AI Engineer or Machine Learning Engineer.</p></div><div class="skill-cloud" aria-label="Research interests and technologies"><span class="pill">Machine Learning</span><span class="pill">Time-Series Analysis</span><span class="pill">Statistics</span><span class="pill">Deep Learning</span><span class="pill">LSTM / RNN</span><span class="pill">Large Language Models</span><span class="pill">Natural Language Processing</span><span class="pill">SQL & Databases</span><span class="pill">Applied AI</span><span class="pill">Software Engineering</span></div></div>
+  </div></section>
+  <section id="research"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">02 / Selected work</div><h2 class="section-title">Research & AI projects</h2></div><p class="section-intro">A selection of projects connecting machine learning, language technologies, and software systems.</p></div>
+    <div class="cards">
+      <article class="card"><div class="card-top"><div class="iconbox">⌘</div><span class="tag">LLMs · NLP</span></div><h3>Natural Language to SQL with LLMs</h3><p>Explored translating everyday-language questions into SQL using OpenAI technologies and LangChain, with the aim of making relational databases more accessible to non-SQL users. Considered complex multi-table queries with PostgreSQL hosted on Amazon RDS.</p><div class="meta">Master's research · Text-to-SQL</div><p style="margin-top:14px"><a class="textlink" href="https://drive.google.com/file/d/1nl44c2Fa5qc3Ri_b5dKeRlrvU7AA8oDN/view?usp=sharing" target="_blank" rel="noopener noreferrer">View research paper ↗</a></p></article>
+      <article class="card"><div class="card-top"><div class="iconbox">⌁</div><span class="tag">LSTM · Deep Learning</span></div><h3>Adaptive Scaling of Docker Microservices</h3><p>Investigated LSTM-based approaches for predicting service demand from HTTP request load and resource-consumption data, with the goal of supporting more responsive scaling and reducing manual intervention.</p><div class="meta">Undergraduate research · Predictive scaling</div><p style="margin-top:14px"><a class="textlink" href="https://drive.google.com/file/d/1zdAF6hVzZL5dCYQWoEGR4IKrxbTyuPWD/view?usp=sharing" target="_blank" rel="noopener noreferrer">View research paper ↗</a></p></article>
+      <article class="card"><div class="card-top"><div class="iconbox">↗</div><span class="tag">Time Series · ML</span></div><h3>Time-Series Machine Learning</h3><p>Contributed a machine-learning algorithm for time-series analysis and prediction to the WSO2 Machine Learner product. Work included literature review, stakeholder discussions, implementation, and experimentation.</p><div class="meta">WSO2 Inc. · Research traineeship · RMSE 0.0043 reported</div></article>
+    </div>
+    <p class="small-note">Project summaries are based on my academic and professional work. Research paper links open the documents shared on Google Drive.</p>
+  </div></section>
+  <section id="experience"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">03 / Career</div><h2 class="section-title">Professional experience</h2></div><p class="section-intro">A software engineering foundation, strengthened by research and experimentation.</p></div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="date">Aug 2025 – Present</div><h3>IFS Developer · Veyron (IFS Partner), working with LSEG Technology</h3><p>Working with IFS Cloud development in an enterprise software environment. Add specific responsibilities, technologies, and outcomes that you are comfortable sharing publicly.</p></div>
+      <div class="timeline-item"><div class="date">Dec 2021 – Feb 2025 · 3+ years</div><h3>Senior Software Engineer · IFS R&amp;D International Private Limited</h3><p>Senior software engineering role contributing to enterprise software development. Add selected project outcomes, tools, and responsibilities to make this entry more specific.</p></div>
+      <div class="timeline-item"><div class="date">Dec 2017 – Dec 2021 · 4 years</div><h3>Software (Senior) Engineer · WSO2 Inc.</h3><p>Software engineering experience at WSO2, following the earlier research traineeship. The research traineeship and its time-series machine-learning work are highlighted separately below.</p></div>
+      <div class="timeline-item"><div class="date">May – Nov 2016 · 6 months</div><h3>Trainee Software Engineer · Research · WSO2 Inc.</h3><p>Contributed a machine-learning algorithm for time-series problems to the WSO2 Machine Learner product. Work included literature review, stakeholder discussions, implementation, and experimentation. The best-performing model was reported with an RMSE of 0.0043 within three months.</p></div>
+      <div class="timeline-item"><div class="date">Oct 2013 – Feb 2014 · 6 months</div><h3>Associate Production · Innodata Lanka (Pvt) Ltd</h3><p>Early professional experience in a production role. Add a short description of your responsibilities if you would like this entry to be more detailed.</p></div>
+    </div>
+  </div></section>
+  <section id="recognition"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">06 / Featured recognition</div><h2 class="section-title">Microsoft Azure Hackathon Winner</h2></div><p class="section-intro">Monash University Malaysia's article confirms that Team Hakk.AI won the Grab Challenge at the 2020 Microsoft Azure Virtual Hackathon.</p></div>
+    <a class="media-feature" href="https://www.monash.edu.my/IT/news-and-events/articles/2020/microsoft-azure-virtual-hackathon-2020" target="_blank" rel="noopener noreferrer" aria-label="Read Monash University Malaysia article about the Microsoft Azure Virtual Hackathon 2020">
+      <div class="media-window"><div class="media-top"><span class="media-brand">Monash University Malaysia</span><span class="media-label">SCHOOL OF INFORMATION TECHNOLOGY · 2020</span></div><div class="media-body"><div class="media-kicker">Microsoft Azure Virtual Hackathon 2020</div><div class="media-headline">Team Hakk.AI wins the Grab Challenge</div><div class="media-summary">The article covers the winning team and its machine-learning challenge to predict ride-hailing estimated arrival times.</div><span class="media-cta">Read the Monash article ↗</span></div></div>
+      <div class="media-caption"><strong>Team Hakk.AI · Grab Challenge Winner</strong><span>Read the original Monash University Malaysia article or view the team's announcement on Facebook.</span><a class="textlink" href="https://www.facebook.com/monashmalaysia/posts/team-hakkai-won-the-recent-microsoft-azure-virtual-hackathons-grab-challenge-whi/3561767510508722/" target="_blank" rel="noopener noreferrer">Facebook announcement ↗</a></div>
+    </a>
+    <p class="small-note">Links to the original Monash University Malaysia article and Facebook announcement are provided for verification.</p>
+  </div></section>
+  <section id="education"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">04 / Education</div><h2 class="section-title">Academic foundation</h2></div><p class="section-intro">Formal computing education alongside continued study in statistics.</p></div>
+    <div class="edu-grid">
+      <article class="edu"><div class="year">Postgraduate · 2 years</div><h3>Master of Computer Science</h3><p>University of Colombo<br><br>Research: LLM-assisted natural-language-to-SQL conversion.</p></article>
+      <article class="edu"><div class="year">Undergraduate · 4 years</div><h3>BSc (Hons) in Information Technology</h3><p>Sri Lanka Institute of Information Technology</p><p>Specialisation: Software Engineering<br>Classification: Second Upper <p>GPA: 3.52 / 4.00</p> Research: LSTM-based microservice scaling.</p></article>
+      <article class="edu"><div class="year">In progress · Online</div><h3>Diploma in Applied Statistics</h3><p>Weekend-based online programme. Six months completed and six months remaining as of October 2026.</p></article>
+    </div>
+  </div></section>
+  <section id="awards"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">05 / Recognition</div><h2 class="section-title">Awards & achievements</h2></div><p class="section-intro">Recognition for research quality and collaborative technical problem-solving.</p></div>
+    <div class="awards">
+      <article class="award"><div class="medal">🏅</div><div><h3>Best Technical Paper — First Runner-up</h3><p>IETW Conference, University of Moratuwa.</p></div></article>
+      <article class="award"><div class="medal">🏆</div><div><h3>Session Best Research Paper Award</h3><p>SLIIT Research Symposium.</p></div></article>
+      <article class="award"><div class="medal">🚀</div><div><h3>Grab Challenge Winner</h3><p>Team Hakk.AI, 2020 Microsoft Azure Virtual Hackathon — Asia-Pacific region.</p></div></article>
+    </div>
+  </div></section>
+  <section id="contact"><div class="wrap">
+    <div class="callout"><div><div class="kicker">07 / Next steps</div><h2>Let's connect research<br>with real-world impact.</h2><p>I am interested in advanced study in AI and opportunities to develop intelligent, scalable software. Reach out to discuss research, projects, or collaboration.</p><div class="actions"><a class="btn secondary" href="https://www.linkedin.com/in/firnas-aleem-4682a010b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="btn secondary" href="https://github.com/am-firnas" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p style="margin-top:18px"><strong>Email:</strong> <a class="textlink" href="mailto:firnas.aleem23@gmail.com">firnas.aleem23@gmail.com</a><br><strong>Phone:</strong> <a class="textlink" href="tel:+94770458636">+94 77 045 8636</a></p></div><div class="actions"><a class="btn primary" href="mailto:firnas.aleem23@gmail.com" id="emailLink">Email me ↗</a><a class="btn secondary" href="tel:+94770458636">Call me ↗</a><button class="btn secondary" id="printBtn" type="button">Print / Save PDF</button></div></div>
+    <p class="small-note">Email and phone links are enabled. GitHub, LinkedIn, both research paper links, and the hackathon recognition sources are included.</p>
+  </div></section>
+  <div class="wrap"><footer><span>© <span id="year"></span> Firnas Aleem</span><span>Professional & Academic Portfolio · Sri Lanka</span><span><a class="textlink" href="https://www.linkedin.com/in/firnas-aleem-4682a010b/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a class="textlink" href="https://github.com/am-firnas" target="_blank" rel="noopener noreferrer">GitHub</a> · <a class="textlink" href="#home">Back to top ↑</a></span></footer></div>
+</div>
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navlinks = document.getElementById('navlinks');
+menuBtn.addEventListener('click', () => { const opened = navlinks.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', String(opened)); menuBtn.textContent = opened ? '✕' : '☰'; });
+navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { navlinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.textContent = '☰'; }));
+document.getElementById('printBtn').addEventListener('click', () => window.print());
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
